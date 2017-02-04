@@ -7,7 +7,7 @@ import socket
 import datetime
 
 file="/home/lnara002/.notifications"
-UDP_IP = "135.227.232.177"
+UDP_IP = "135.227.232.199"
 UDP_PORT = 25000
 
 notif_file  = "/home/lnara002/.tmux_inform_notifications"
