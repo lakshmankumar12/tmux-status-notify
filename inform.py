@@ -1,8 +1,11 @@
 #!/usr/bin/python
 
+from __future__ import print_function
 import sys
 import os
 import socket
+import subprocess
+import re
 
 import argparse
 parser = argparse.ArgumentParser()
@@ -13,10 +16,15 @@ args = parser.parse_args()
 message = args.message
 if args.pwd:
   message = message + " from " + os.getcwd()
-ip1="135.227.232.199"
-ip2="lakshmankumar.ddns.net"
+line=subprocess.check_output(["ip","route","get","8.8.8.8"])
+if not line:
+    print("Couldn't get ip route get 8.8.8.8 o/p")
+    sys.exit(1)
+match=re.search('src (\d+\.\d+\.\d+\.\d+)',line)
+if not match:
+    print("Count find src ip o/p")
+ip=match.group(1)
 port=25000
 sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
-sock.sendto(message, (ip1, port))
-#sock.sendto(message, (ip2, port))
+sock.sendto(message, (ip, port))

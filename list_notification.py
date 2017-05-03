@@ -1,12 +1,14 @@
-#!/usr/local/bin/python2.7
+#!/usr/bin/python
 
 from __future__ import print_function
 import fcntl
+import os
 
-file="/home/lnara002/.notifications"
+from os.path import expanduser
+home = expanduser("~")
 
-notif_file  = "/home/lnara002/.tmux_inform_notifications"
-historical  = "/home/lnara002/.tmux_inform_notifications.historic"
+notif_file  = os.path.join(home,".tmux_inform_notifications")
+historical  = os.path.join(home,".tmux_inform_notifications.historic")
 
 f=open(notif_file,"r+")
 h=open(historical,"a")

@@ -1,16 +1,18 @@
-#!/usr/local/bin/python2.7
+#!/usr/bin/python
 
 
 from __future__ import print_function
 import fcntl
 import socket
 import datetime
+import os
 
-file="/home/lnara002/.notifications"
-UDP_IP = "135.227.232.199"
+UDP_IP = "0.0.0.0"
 UDP_PORT = 25000
 
-notif_file  = "/home/lnara002/.tmux_inform_notifications"
+from os.path import expanduser
+home = expanduser("~")
+notif_file  = os.path.join(home,".tmux_inform_notifications")
 
 def main():
   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
