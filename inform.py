@@ -16,7 +16,9 @@ args = parser.parse_args()
 message = args.message
 if args.pwd:
   message = message + " from " + os.getcwd()
-line=subprocess.check_output(["ip","route","get","8.8.8.8"])
+ip_proc=subprocess.Popen(["ip","route","get","8.8.8.8"],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+line,err=ip_proc.communicate('')
+errcode = ip_proc.wait()
 if not line:
     print("Couldn't get ip route get 8.8.8.8 o/p")
     sys.exit(1)
