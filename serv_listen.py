@@ -33,3 +33,4 @@ import daemon
 with daemon.DaemonContext():
   main()
 
+print("You should never see this - daemon isn't working!")

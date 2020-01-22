@@ -22,7 +22,7 @@ errcode = ip_proc.wait()
 if not line:
     print("Couldn't get ip route get 8.8.8.8 o/p")
     sys.exit(1)
-match=re.search('src (\d+\.\d+\.\d+\.\d+)',line)
+match=re.search(r'src (\d+\.\d+\.\d+\.\d+)',line)
 if not match:
     print("Count find src ip o/p")
 ip=match.group(1)
